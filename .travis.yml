@@ -9,9 +9,6 @@ before_install:
 script:
   - docker run frannkyoa/img-docker-react npm run test -- --coverage
 
-install:
-  - travis_wait 30 Rscript -e "0"
-  
 deploy:
   region: "eu-west-2"
   app: "docker-react"
