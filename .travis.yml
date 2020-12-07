@@ -1,8 +1,10 @@
 sudo: required
+install: travis_wait mvn install
 services: 
   - docker
 
 before_install:
+
   - docker build -t frannkyoa/img-docker-react -f Dockerfile.dev .
 
 script:
