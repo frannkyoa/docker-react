@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run frannkyoa/img-docker-react npm run test -- --coverage
+
+deploy:
+  region: "eu-west-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-950641613616"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_ACCESS_KEY"
