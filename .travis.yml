@@ -6,4 +6,4 @@ before_install:
   - docker build -t frannkyoa/img-docker-react -f Dockerfile.dev .
 
 script:
-  - docker run frannkyoa/img-docker-react npm run test -- -- coverage
+  - docker run frannkyoa/img-docker-react npm run test -- --coverage
