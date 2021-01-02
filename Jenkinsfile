@@ -4,8 +4,7 @@ pipeline {
     registry = "frannyoa/frankie_docker_1repo"
     registryCredential = 'DockerHubCrednetials'
     dockerImage = ''
-    DOCKER_TAG = getDockerTag()
-    }
+   }
   stages {
     stage('Cloning Git') {
       steps {
@@ -19,10 +18,5 @@ pipeline {
         }
       }
     }
-}
-}
-
-def getDockerTag() {
-    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
-    return tag
-}
+ }
+ }
