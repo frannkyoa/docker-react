@@ -1,10 +1,5 @@
 pipeline {
-    agent any
-    environment {
-    registry = "frannyoa/frankie_docker_1repo"
-    registryCredential = 'DockerHubCrednetials'
-    dockerImage = ''
-   }
+  agent any
   stages {
     stage('Cloning Git') {
       steps {
@@ -14,7 +9,7 @@ pipeline {
     stage('Build Docker image') {
       steps{
          {
-          sh " docker build -t frannyoa/frankie_docker_1repo:REACT"
+          sh "docker build . -t frannyoa/frankie_docker_1repo:REACT"
         }
       }
     }
