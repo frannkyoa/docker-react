@@ -2,7 +2,7 @@ pipeline {
       agent any
       environment {
       registry = "frannyoa/frankie_docker_1repo"
-      registryCredential = 'DockerHubCrednetials'
+      registryCredential = 'DockerHubCredentials'
       imagename = 'react'
     }
     stages {
@@ -13,9 +13,7 @@ pipeline {
       }
       stage('Build docker Image'){
         steps{
-          script{
-            docker.build registry + ":${imagename}"
-          }
+          sh "docker build -t registry + ":${imagename}""
         }
       }
       stage('Push Docker image to DockerHub') {
