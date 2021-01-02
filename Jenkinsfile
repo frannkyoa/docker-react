@@ -3,6 +3,7 @@ pipeline {
       environment {
       registry = "frannyoa/frankie_docker_1repo"
       registryCredential = 'DockerHubCrednetials'
+      imagename = 'react'
     }
     stages {
       stage('Cloning Git') {
@@ -13,7 +14,7 @@ pipeline {
       stage('Build docker Image'){
         steps{
           script{
-            docker.build registry + ":$BUILD_NUMBER ."
+            docker.build registry + ":${imagename}"
           }
         }
       }
