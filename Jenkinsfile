@@ -4,6 +4,7 @@ pipeline {
     registry = "frannyoa/frankie_docker_1repo"
     registryCredential = 'DockerHubCrednetials'
     dockerImage = ''
+    DOCKER_TAG = getDockerTag()
     }
   stages {
     stage('Cloning Git') {
@@ -11,12 +12,17 @@ pipeline {
         git 'https://github.com/frannkyoa/img-docker-react.git'
       }
     }
-    stage('Building image') {
+    stage('Build Docker image') {
       steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+         {
+          sh " docker build -t frannyoa/frankie_docker_1repo:REACT"
         }
       }
     }
 }
+}
+
+def getDockerTag() {
+    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+    return tag
 }
