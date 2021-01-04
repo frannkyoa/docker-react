@@ -3,7 +3,7 @@ pipeline {
       environment {
       registry = "frannyoa/frankie_docker_1repo"
       registryCredential = 'frannyoa'
-      dockerImage = ''
+      dockerImage = 'nginx'
     }
     stages {
       stage('Cloning Git') {
@@ -14,7 +14,7 @@ pipeline {
       stage('Build docker Image'){
         steps{
            script{
-             dockerImage = docker.build registry + ":$BUILD_NUMBER"
+             dockerImage = docker.build registry + ":$dockerImage"
            }
         }
       }
