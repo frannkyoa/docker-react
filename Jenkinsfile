@@ -18,12 +18,10 @@ pipeline {
       }
       stage('Push Docker image to DockerHub') {
         steps{
-          script {
-            docker.withRegistry('', registryCredential){
-              dockerImage.Push("$BUILD_NUMBER")
-              dockerImage.Push('latest')
-            }
-          }
+          withCredentials([string(credentialsId: 'frannyoa', variable: 'dockerhubcredentials')]) {
+          sh "docker login -u frannyoa -p ${dockerhubcredentials}"
+          sh " docker push frannyoa/frankie_docker_1repo:${imagename}"
+          } 
         }
       }
     }
