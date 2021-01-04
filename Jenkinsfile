@@ -2,7 +2,7 @@ pipeline {
       agent any
       environment {
       registry = "frannyoa/frankie_docker_1repo"
-      registryCredential = 'dockerhubcredentials'
+      registryCredential = 'DockerHubCredentials'
       dockerImage = ''
     }
     stages {
