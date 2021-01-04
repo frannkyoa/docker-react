@@ -3,7 +3,7 @@ pipeline {
       environment {
       registry = "frannyoa/frankie_docker_1repo"
       registryCredential = 'frannyoa'
-      DOCKER_TAG = getDockerTag()
+      DOCKER_TAG = 'nginx'
     }
     stages {
       stage('Cloning Git') {
@@ -14,7 +14,7 @@ pipeline {
       stage('Build docker Image'){
         steps{
            script{
-             dockerImage = docker.build . registry + ":${DOCKER_TAG}"
+             dockerImage = docker.build registry + ":$DOCKER_TAG"
            }
         }
       }
@@ -30,7 +30,7 @@ pipeline {
     }
 }
 
-def getDockerTag() {
+/* def getDockerTag() {
   def tag = sh script: 'git rev-parse HEAD', returnStdout: true
   return tag
-}
+} */
