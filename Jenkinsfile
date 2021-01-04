@@ -13,7 +13,7 @@ pipeline {
       }
       stage('Build docker Image'){
         steps{
-          sh "docker build -t frannyoa/frankie_docker_1repo:${imagename}"
+          sh "docker build . -t frannyoa/frankie_docker_1repo:${imagename}"
         }
       }
       stage('Push Docker image to DockerHub') {
