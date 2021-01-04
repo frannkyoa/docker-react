@@ -1,12 +1,11 @@
-FROM node:alpine
-
+FROM node:alpine as stage-builder
 WORKDIR '/app'
-
 COPY package.json .
-
 RUN npm install 
-
 COPY . .
+RUN npm build
 
-CMD ["npm", "run", "start"]
+FROM nginx
+EXPOSE 80
+COPY --from=stage-builder /app/build /usr/share/nginx/html/
 
