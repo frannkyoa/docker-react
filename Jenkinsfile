@@ -2,7 +2,7 @@ pipeline {
       agent any
       environment {
       registry = "frannyoa/frankie_docker_1repo"
-      registryCredential = 'DockerHubCredentials'
+      registryCredential = 'frannyoa'
       DOCKER_TAG = 'nginx'
     }
     stages {
